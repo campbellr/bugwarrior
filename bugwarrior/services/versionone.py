@@ -1,3 +1,4 @@
+from twiggy import log
 import v1pysdk
 
 from bugwarrior.services import IssueService
@@ -17,16 +18,19 @@ class VersionOneService(IssueService):
     def issues(self):
         """ Return the stories assigned to the user"""
         user = self.v1.Member.where(IsSelf='true').first()
-        issues = user.OwnedWorkitems
+        userId = "%s:%s" % (user.AssetType, user.Key)
+        log.debug("Fetching tasks for versionOne user \"%s\", ID: %s" % (user.Name, userId))
+        issues = list(self.v1.Story.where(Owners=userId, IsClosed='false').select('Name', 'Number', 'Team'))
+        log.debug("Found issues: %s" % str(issues))
 
         return [{
             "description": self.description(
                 issue.Name, issue.url,
-                issue.Number, cls="issue",
+                int(issue.Number.split('-')[-1]), cls="issue",
                 ),
-            "project": issue.Team.Name,
+            "project": getattr(issue.Team, 'Name', 'uncategorized'),
             "priority": self.default_priority,
-        } for tag, issue in issues]
+        } for issue in issues]
 
 
     def get_owner(self, issue):
