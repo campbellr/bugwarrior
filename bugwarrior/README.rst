@@ -11,6 +11,7 @@ It currently supports the following remote resources:
  - `bitbucket <http://bitbucket.org>`_
  - `trac <http://trac.edgewall.org/>`_
  - `bugzilla <http://www.bugzilla.org/>`_
+ - `VersionOne <http://www.versionone.com/>`_
 
 Configuring
 -----------
@@ -96,6 +97,15 @@ Create a ``~/.bugwarriorrc`` file with the following contents.
   bugzilla.username = rbean@redhat.com
   bugzilla.password = OMG_LULZ
 
+  # This is an example of a VersionOne target. This will fetch any story
+  # assigned to campbellr which are associated with the currently active sprint.
+  # if current_sprint is False, all assigned stories will be fetched.
+  [versionone.work]
+  service = versionone
+  versionone.url = versionone.example.com
+  versionone.username = campbellr
+  versionone.password = OMG_LULZ
+  current_sprint = True
 
 .. example
 

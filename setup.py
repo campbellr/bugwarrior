@@ -27,6 +27,7 @@ setup(name='bugwarrior',
       packages=find_packages(exclude=['ez_setup', 'examples', 'tests']),
       include_package_data=True,
       zip_safe=False,
+      dependency_links=["https://github.com/versionone/v1pysdk/tarball/master#egg=v1pysdk-0.1"],
       install_requires=[
           "twiggy",
           "bitlyapi",
@@ -34,6 +35,7 @@ setup(name='bugwarrior',
           "offtrac",
           "python-bugzilla",
           "taskw >= 0.4.1",
+          "v1pysdk",
       ],
       entry_points="""
       [console_scripts]
