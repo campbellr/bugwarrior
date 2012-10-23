@@ -30,7 +30,7 @@ Create a ``~/.bugwarriorrc`` file with the following contents.
   # Here you define a comma separated list of targets.  Each of them must have a
   # section below determining their properties, how to query them, etc.  The name
   # is just a symbol, and doesn't have any functional importance.
-  targets = my_github, my_bitbucket, paj_bitbucket, moksha_trac, bz.redhat
+  targets = my_github, my_bitbucket, paj_bitbucket, moksha_trac, bz.redhat, versionone.work
 
   # log.level specifices the verbosity.  The default is DEBUG.
   # log.level can be one of DEBUG, INFO, WARNING, ERROR, CRITICAL, DISABLED
@@ -99,7 +99,8 @@ Create a ``~/.bugwarriorrc`` file with the following contents.
 
   # This is an example of a VersionOne target. This will fetch any story
   # assigned to campbellr which are associated with the currently active sprint.
-  # if current_sprint is False, all assigned stories will be fetched.
+  # if current_sprint is False, all assigned stories will be fetched, regardless
+  # of whether they are targeted for a particular sprint or not.
   [versionone.work]
   service = versionone
   versionone.url = versionone.example.com
