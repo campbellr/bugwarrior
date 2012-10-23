@@ -38,6 +38,7 @@ class IssueService(object):
         cls_markup = {
             'issue': 'Is',
             'pull_request': 'PR',
+            'backlog': 'B',
         }
         # TODO -- get the '35' here from the config.
         return "%s%s#%i - %s .. %s" % (

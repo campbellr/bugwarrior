@@ -40,7 +40,7 @@ class VersionOneService(IssueService):
             task = {
                     "description": self.description(
                                         issue.Name, issue.url,
-                                        int(issue.Number.split('-')[-1]), cls="issue",
+                                        int(issue.Number.split('-')[-1]), cls="backlog",
                                     ),
                     "project": getattr(issue.Team, 'Name', 'uncategorized'),
                     "priority": self.default_priority,
